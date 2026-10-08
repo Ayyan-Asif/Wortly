@@ -1,98 +1,183 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
+import { router } from 'expo-router';
+import React from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
 
 export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+  return React.createElement(
+    ThemedView,
+    { style: styles.container },
+    React.createElement(
+      SafeAreaView,
+      { style: styles.safeArea },
+      React.createElement(
+        View,
+        null,
+        React.createElement(ThemedText, { type: 'small' }, 'DEUTSCH LERNEN 🇩🇪'),
+        React.createElement(ThemedText, { type: 'title' }, 'Willkommen!'),
+        React.createElement(
+          ThemedText,
+          { style: styles.subtitle },
+          'Lerne jeden Tag ein bisschen Deutsch.'
+        )
+      ),
+      React.createElement(
+        View,
+        { style: styles.levelCard },
+        React.createElement(
+          View,
+          null,
+          React.createElement(ThemedText, { style: styles.levelLabel }, 'DEIN NIVEAU'),
+          React.createElement(ThemedText, { style: styles.level }, 'A1')
+        ),
+        React.createElement(ThemedText, { style: styles.flag }, '🇩🇪')
+      ),
+      React.createElement(
+        ThemedView,
+        { type: 'backgroundElement', style: styles.wordCard },
+        React.createElement(ThemedText, { type: 'small' }, 'WORT DES TAGES'),
+        React.createElement(ThemedText, { style: styles.word }, 'gemütlich'),
+        React.createElement(ThemedText, { style: styles.translation }, 'comfortable · cozy'),
+        React.createElement(ThemedText, { style: styles.example }, '„Das Zimmer ist sehr gemütlich.“'),
+        React.createElement(
+          Pressable,
+          {
+            style: styles.learnButton,
+            onPress: () => router.push('/flashcard'),
+          },
+          React.createElement(ThemedText, { style: styles.buttonText }, 'Jetzt lernen →')
+        )
+      ),
+      React.createElement(
+        ThemedView,
+        { type: 'backgroundElement', style: styles.progressCard },
+        React.createElement(
+          View,
+          { style: styles.progressHeader },
+          React.createElement(ThemedText, { type: 'subtitle' }, 'Dein Fortschritt'),
+          React.createElement(ThemedText, null, '65%')
+        ),
+        React.createElement(
+          View,
+          { style: styles.progressBackground },
+          React.createElement(View, { style: styles.progressBar })
+        ),
+        React.createElement(ThemedText, { type: 'small' }, '13 von 20 Lektionen abgeschlossen')
+      ),
+      React.createElement(ThemedText, { style: styles.footer }, 'Jeden Tag ein bisschen. 💪')
+    )
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
   },
+
   safeArea: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 100,
+    gap: 18,
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+
+  subtitle: {
+    marginTop: 5,
+    opacity: 0.6,
   },
-  title: {
+
+  levelCard: {
+    backgroundColor: '#2563EB',
+    borderRadius: 18,
+    padding: 18,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  levelLabel: {
+    color: '#DBEAFE',
+    fontSize: 11,
+    fontWeight: 'bold',
+  },
+
+  level: {
+    color: '#FFFFFF',
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginTop: 3,
+  },
+
+  flag: {
+    fontSize: 38,
+  },
+
+  wordCard: {
+    padding: 22,
+    borderRadius: 20,
+    gap: 8,
+  },
+
+  word: {
+    fontSize: 38,
+    fontWeight: 'bold',
+  },
+
+  translation: {
+    fontSize: 18,
+    opacity: 0.7,
+  },
+
+  example: {
+    marginTop: 8,
+    fontStyle: 'italic',
+    opacity: 0.8,
+  },
+
+  learnButton: {
+    backgroundColor: '#2563EB',
+    paddingVertical: 13,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 12,
+  },
+
+  buttonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+
+  progressCard: {
+    padding: 18,
+    borderRadius: 18,
+    gap: 12,
+  },
+
+  progressHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  progressBackground: {
+    height: 9,
+    borderRadius: 5,
+    backgroundColor: '#D1D5DB',
+    overflow: 'hidden',
+  },
+
+  progressBar: {
+    width: '65%',
+    height: '100%',
+    backgroundColor: '#2563EB',
+  },
+
+  footer: {
     textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+    opacity: 0.5,
   },
 });
