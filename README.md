@@ -1,56 +1,87 @@
-# Welcome to your Expo app 👋
+# 📚 Wortly — German Vocabulary Learning App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Wortly is a mobile German vocabulary learning application built with **React Native, Expo, and TypeScript**.
 
-## Get started
+The goal of Wortly is to make German vocabulary practice simple, interactive, and enjoyable through daily words, flashcards, and an easy-to-use mobile interface.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## ✨ Features
 
-2. Start the app
+### 🏠 Home
+- Welcome screen for the Wortly app
+- Displays the main application content
+- Simple and clean mobile interface
+- Quick access to vocabulary learning features
 
-   ```bash
-   npx expo start
-   ```
+### 🃏 Flashcards
+- Interactive German vocabulary flashcards
+- Learn German words through a card-based interface
+- Designed for quick and repeated vocabulary practice
 
-In the output, you'll find options to open the app in a
+### 🇩🇪 German Vocabulary
+- German learning focused interface
+- German vocabulary resources and visual elements
+- Designed for learners working toward improving their German vocabulary
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 👤 About
+- Information about Wortly
+- Information about the developer
+- Application/project details
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 🎨 Modern UI
+- Bottom tab navigation
+- Custom application icons
+- Custom images and branding
+- Light and dark theme support
+- Responsive mobile layout
+- Native Expo navigation experience
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 🛠️ Technologies Used
 
-```bash
-npm run reset-project
-```
+- **React Native**
+- **Expo SDK 57**
+- **Expo Router**
+- **TypeScript**
+- **JavaScript**
+- **React**
+- **EAS Build**
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## 📁 Project Structure
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```text
+Wortly/
+│
+├── assets/
+│   └── images/
+│       ├── android-icon-background.png
+│       ├── android-icon-foreground.png
+│       ├── android-icon-monochrome.png
+│       ├── expo-logo.png
+│       ├── favicon.png
+│       ├── German.png
+│       ├── icon.png
+│       ├── logoAyyan.png
+│       ├── rocket-lunch.png
+│       └── splash-icon.png
+│
+├── src/
+│   ├── app/
+│   │   ├── _layout.tsx
+│   │   ├── index.tsx
+│   │   ├── About.tsx
+│   │   └── flashcard.tsx
+│   │
+│   └── components/
+│       └── app-tabs.tsx
+│
+├── app.json
+├── eas.json
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── README.md
